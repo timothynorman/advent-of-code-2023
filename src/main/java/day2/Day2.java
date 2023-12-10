@@ -26,9 +26,7 @@ public class Day2 {
         int total = 0;
 
         for (String line : input) {
-            String[] splitLine = line.split(":");
-            String gameDisplays = splitLine[1];
-            total += powerOfGames(gameDisplays);
+            total += powerOfGames(line.split(":")[1]);
         }
 
         System.out.printf("Part 2: %d", total);
@@ -64,11 +62,8 @@ public class Day2 {
 
         for (String line : input) {
             String[] splitLine = line.split(":");
-            String gameTitle = splitLine[0];
-            String gameDisplays = splitLine[1];
-            if (areAllDisplaysPossible(gameDisplays)) {
-                String[] gameNameParts = gameTitle.split(" ");
-                int gameNumber = Integer.parseInt(gameNameParts[1]);
+            if (areAllDisplaysPossible(line.split(":")[1])) {
+                int gameNumber = Integer.parseInt(line.split(":")[0].split(" ")[1]);
 
                 total += gameNumber;
             }

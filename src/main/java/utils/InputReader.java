@@ -44,4 +44,24 @@ public class InputReader {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Method to read an input file and return it as a 2D ArrayList of Characters.
+     * @return 2D ArrayList of Characters.
+     */
+    public ArrayList<ArrayList<Character>> toCharGrid() {
+        List<String> inputAsLines = toLines();
+        ArrayList<ArrayList<Character>> inputAsCharGrid = new ArrayList<>();
+
+        for (String line : inputAsLines) {
+            char[] ch = line.toCharArray();
+            ArrayList<Character> charLine = new ArrayList<>();
+
+            for (char c : ch) {
+                charLine.add(c);
+            }
+            inputAsCharGrid.add(charLine);
+        }
+        return inputAsCharGrid;
+    }
 }

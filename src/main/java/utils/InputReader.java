@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class to read an input file and convert each line to a string, and save those
@@ -43,6 +44,19 @@ public class InputReader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Method to read an input file of integers and return each line as a list of integers.
+     * @return 2D ArrayList of Integers.
+     */
+    public List<List<Integer>> toLinesInteger() {
+        return toLines().stream()
+                .map(line -> line.split(" "))
+                .map(arr -> List.of(arr).stream()
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList()))
+                .collect(Collectors.toList());
     }
 
     /**
